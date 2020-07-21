@@ -2,6 +2,11 @@ from PIL import Image
 from pallete import *
 import os
 
+PALETTES = {
+    "1":("DOOM",DOOM),
+    "2":("QUAKE",QUAKE)
+    }
+
 def GetClosestColor(color,palette):
     closest_index = 0
     closest_color_difference = 0
@@ -42,14 +47,13 @@ def GetDictionaryValueFromUser(prompt,dictionary):
     return selection
 
 #Start of program
-palettes = {"1":("DOOM",DOOM),"2":("QUAKE",QUAKE)}
-source_paths = input("Enter or drag image file path(s): ")
+source_paths = input("Enter image file path(s): ")
 source_paths = source_paths.split()
 if len(source_paths) == 0:
     exit
 for path in source_paths:
     source_image = Image.open(path)
-    selected_palette = GetDictionaryValueFromUser("[{}]\n Please select a color paltte:".format(path),palettes)
+    selected_palette = GetDictionaryValueFromUser("[{}]\n Please select a color paltte:".format(path),PALETTES)
     source_image = source_image.resize((64,64),Image.NEAREST)
     #This is needed for image formats that use a color table/palette.
     source_image = source_image.convert("RGBA")
