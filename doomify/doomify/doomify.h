@@ -12,4 +12,5 @@ public:
 
 private:
     Ui::doomifyClass ui;
+    void LoadSourceImage();
 };
