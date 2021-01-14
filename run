@@ -1,0 +1,12 @@
+#!/bin/bash
+
+clear
+
+echo "BUILDING..."
+cmake ./doomify -B ./build
+
+echo "COMPILING..."
+cmake --build ./build
+
+echo "ATTEMPTING TO RUN DOOMIFY..."
+./bin/doomify
