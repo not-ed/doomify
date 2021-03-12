@@ -14,19 +14,356 @@
    <string>DOOMify</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="loadButton">
+   <widget class="QPushButton" name="buttonNewJob">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>410</y>
-      <width>241</width>
-      <height>121</height>
+      <x>450</x>
+      <y>100</y>
+      <width>341</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Load Image</string>
+     <string>New Job</string>
     </property>
    </widget>
+   <widget class="QLabel" name="labelRawImage">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>201</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>201</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Original Image</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelJobPreview">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>100</y>
+      <width>201</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelPreview">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>80</y>
+      <width>201</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Preview</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>130</y>
+      <width>341</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Jobs</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonExportCurrentJob">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>450</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Export Current Job</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonExportAllJobs">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>450</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Export All Jobs</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxJobProperties">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>310</y>
+      <width>411</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Job Properties</string>
+    </property>
+    <widget class="QGroupBox" name="groupBoxJobSize">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>80</y>
+       <width>191</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Size</string>
+     </property>
+     <widget class="QSpinBox" name="spinBoxJobWidth">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>16384</number>
+      </property>
+      <property name="value">
+       <number>64</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelJobSizeX">
+      <property name="geometry">
+       <rect>
+        <x>81</x>
+        <y>61</y>
+        <width>31</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>X</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxJobHeight">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>60</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>16384</number>
+      </property>
+      <property name="value">
+       <number>64</number>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBoxUseSourceSize">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Use Original Image</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBoxJobBackground">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>191</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Background</string>
+     </property>
+     <widget class="QSpinBox" name="spinBoxJobRed">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>59</y>
+        <width>51</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBoxJobTransparency">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>29</y>
+        <width>101</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Transparent</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxJobGreen">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>59</y>
+        <width>51</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxJobBlue">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>59</y>
+        <width>51</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelJobBackground">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>30</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QComboBox" name="comboBoxJobPalette">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>351</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="maxVisibleItems">
+      <number>10</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonCustomJobPalette">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>50</y>
+       <width>31</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>391</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Color Palette</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>groupBoxJobProperties</zorder>
+   <zorder>buttonNewJob</zorder>
+   <zorder>labelRawImage</zorder>
+   <zorder>label</zorder>
+   <zorder>labelJobPreview</zorder>
+   <zorder>labelPreview</zorder>
+   <zorder>groupBox_3</zorder>
+   <zorder>buttonExportCurrentJob</zorder>
+   <zorder>buttonExportAllJobs</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
