@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->comboBoxJobPalette->addItems(HARD_PALETTE_NAMES);
 
+    setWindowIcon(QIcon(":/assets/doomify.ico"));
+
     SetUpComponentConnections();
     SetUpImageDialog();
     UpdateJobRelevantUIState();

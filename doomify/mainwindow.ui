@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>511</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="buttonNewJob">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>100</y>
+      <x>440</x>
+      <y>10</y>
       <width>341</width>
       <height>21</height>
      </rect>
@@ -30,7 +30,7 @@
    <widget class="QLabel" name="labelRawImage">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>100</y>
       <width>201</width>
       <height>201</height>
@@ -49,7 +49,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>80</y>
       <width>201</width>
       <height>17</height>
@@ -62,7 +62,7 @@
    <widget class="QLabel" name="labelJobPreview">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>230</x>
       <y>100</y>
       <width>201</width>
       <height>201</height>
@@ -81,7 +81,7 @@
    <widget class="QLabel" name="labelPreview">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>230</x>
       <y>80</y>
       <width>201</width>
       <height>17</height>
@@ -94,10 +94,10 @@
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>130</y>
+      <x>440</x>
+      <y>30</y>
       <width>341</width>
-      <height>311</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="title">
@@ -110,8 +110,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>450</y>
+      <x>440</x>
+      <y>470</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -126,8 +126,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>450</y>
+      <x>620</x>
+      <y>470</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -139,7 +139,7 @@
    <widget class="QGroupBox" name="groupBoxJobProperties">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>310</y>
       <width>411</width>
       <height>181</height>
@@ -355,6 +355,25 @@
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="appLogo">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>10</y>
+      <width>321</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="doomify.qrc">:/assets/logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
    <zorder>groupBoxJobProperties</zorder>
    <zorder>buttonNewJob</zorder>
    <zorder>labelRawImage</zorder>
@@ -364,9 +383,12 @@
    <zorder>groupBox_3</zorder>
    <zorder>buttonExportCurrentJob</zorder>
    <zorder>buttonExportAllJobs</zorder>
+   <zorder>appLogo</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="doomify.qrc"/>
+ </resources>
  <connections/>
 </ui>
