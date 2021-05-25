@@ -145,6 +145,9 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/12206-codestream
 .idea/codestream.xml
 
+# .idea Folder
+.idea/
+
 ### CMake ###
 CMakeLists.txt.user
 CMakeCache.txt
@@ -294,3 +297,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,clion,qt,cmake,linux,windows,qtcreator,visualstudiocode
+
+# DOOMify bin
+doomify/bin/
