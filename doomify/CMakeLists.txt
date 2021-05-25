@@ -37,6 +37,7 @@ set(PROJECT_SOURCES
         job.cpp
         job.h
         palettes.h
+        doomify.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
