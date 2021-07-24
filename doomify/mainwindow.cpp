@@ -71,6 +71,14 @@ void MainWindow::CreateNewJob(){
         ui->labelRawImage->setPixmap(QPixmap::fromImage(selectedJob->GetSourceImage()));
         ui->labelRawImage->setPixmap(ui->labelRawImage->pixmap()->scaled(ui->labelRawImage->width(),ui->labelRawImage->height(),Qt::KeepAspectRatio, Qt::FastTransformation));
 
+        //TODO: We need to look at whether this could be better off somewhere else and adjusted.
+        QListWidgetItem* new_item = new QListWidgetItem;
+        QString new_item_text = QFileInfo(imageOpenDialog.selectedFiles()[0]).fileName();
+        new_item->setText(new_item_text);
+        new_item->setIcon(QIcon(QPixmap::fromImage(selectedJob->GetSourceImage())));
+        ui->listWidgetJobs->insertItem(0,new_item);
+        //
+
         UpdateJobOutputPreview();
     }
 }

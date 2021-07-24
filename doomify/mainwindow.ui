@@ -91,19 +91,6 @@
      <string>Preview</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>30</y>
-      <width>341</width>
-      <height>431</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Existing Jobs</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="buttonExportCurrentJob">
     <property name="enabled">
      <bool>false</bool>
@@ -374,16 +361,26 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QListWidget" name="listWidgetJobs">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>40</y>
+      <width>341</width>
+      <height>421</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>groupBoxJobProperties</zorder>
    <zorder>buttonNewJob</zorder>
    <zorder>labelRawImage</zorder>
    <zorder>label</zorder>
    <zorder>labelJobPreview</zorder>
    <zorder>labelPreview</zorder>
-   <zorder>groupBox_3</zorder>
    <zorder>buttonExportCurrentJob</zorder>
    <zorder>buttonExportAllJobs</zorder>
    <zorder>appLogo</zorder>
+   <zorder>listWidgetJobs</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
