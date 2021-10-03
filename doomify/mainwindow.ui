@@ -307,25 +307,12 @@
       <rect>
        <x>10</x>
        <y>50</y>
-       <width>351</width>
+       <width>391</width>
        <height>25</height>
       </rect>
      </property>
      <property name="maxVisibleItems">
       <number>10</number>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="buttonCustomJobPalette">
-     <property name="geometry">
-      <rect>
-       <x>370</x>
-       <y>50</y>
-       <width>31</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -339,6 +326,19 @@
      </property>
      <property name="text">
       <string>Color Palette</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonUpdateJobPreview">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>0</y>
+       <width>201</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Update Preview</string>
      </property>
     </widget>
    </widget>

@@ -38,7 +38,7 @@ set(PROJECT_SOURCES
         job.h
         palettes.h
         doomify.qrc
-)
+        imageschema.h imagegeneration.h imagegeneration.cpp palettes.cpp)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(doomify

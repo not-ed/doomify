@@ -5,12 +5,8 @@
 #include "job.h"
 #include <QMainWindow>
 #include <QFileDialog>
-#include <QColorDialog>
 #include <QComboBox>
-#include <QVector>
-#include <QColor>
-#include <QMessageBox>
-#include <QInputDialog>
+#include <QListWidget>
 #include <QColor>
 
 QT_BEGIN_NAMESPACE
@@ -25,20 +21,27 @@ public:
     ~MainWindow();
 private:
     Ui::MainWindow *ui;
-    Job* selectedJob = nullptr;
-    QFileDialog imageOpenDialog;
-
-    void SetUpImageDialog();
     void SetUpComponentConnections();
-    void UpdateJobRelevantUIState();
+
+    QFileDialog imageOpenDialog;
+    void SetUpImageDialog();
+
+    std::vector<Palette> palettes;
+
     void CreateNewJob();
-    void OnJobPaletteChange();
-    void UpdateJobBackgroundColor();
-    QColor GetBackgroundSpinboxColor();
-    void UpdateJobOutputPreview();
-    void UpdateJobSize();
-    void SetJobOptionsToDefault();
-    void ImportCustomJobPalette();
+
+    Job* selectedJob = nullptr;
+    void SyncToSelectedJob();
+    void OnPreviewUpdateRequested();
+    void OnPaletteSelection(int new_index);
+    void OnJobSourceSizeToggle(bool new_state);
+    void OnJobWidthUpdate(int new_width);
+    void OnJobHeightUpdate(int new_height);
+    void OnBackgroundAlphaToggle(bool new_state);
+    void OnBackgroundRedUpdate(int new_value);
+    void OnBackgroundGreenUpdate(int new_value);
+    void OnBackgroundBlueUpdate(int new_value);
+    void OnJobSelection(int new_index);
     void ExportCurrentJob();
 };
 
