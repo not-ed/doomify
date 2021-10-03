@@ -18,7 +18,7 @@ QT += gui
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += job.h mainwindow.h palettes.h
+HEADERS += job.h mainwindow.h palettes.h imageschema.h imagegeneration.h
 FORMS += mainwindow.ui
-SOURCES += job.cpp main.cpp mainwindow.cpp
+SOURCES += job.cpp main.cpp mainwindow.cpp palettes.cpp imagegeneration.cpp
 RESOURCES += doomify.qrc
