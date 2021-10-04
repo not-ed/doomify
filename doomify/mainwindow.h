@@ -8,6 +8,7 @@
 #include <QComboBox>
 #include <QListWidget>
 #include <QColor>
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +32,8 @@ private:
     void CreateNewJob();
 
     Job* selectedJob = nullptr;
+    std::vector<Job*> openJobs;
+
     void SyncToSelectedJob();
     void OnPreviewUpdateRequested();
     void OnPaletteSelection(int new_index);

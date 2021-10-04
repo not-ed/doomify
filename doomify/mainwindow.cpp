@@ -15,13 +15,17 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     for (auto p : palettes) {
         ui->comboBoxJobPalette->addItem(p.displayName);
     }
+
+    openJobs.clear();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    //TODO: other jobs are not being freed - this includes job list widget items
-    delete selectedJob;
+
+    for (Job* j : openJobs){
+        delete j;
+    }
 }
 
 void MainWindow::SetUpImageDialog(){
@@ -170,7 +174,8 @@ void MainWindow::OnBackgroundBlueUpdate(int new_value){
 }
 
 void MainWindow::OnJobSelection(int new_index) {
-    //TODO
+    selectedJob = openJobs.at(new_index);
+    SyncToSelectedJob();
 }
 
 void MainWindow::CreateNewJob(){
@@ -184,6 +189,8 @@ void MainWindow::CreateNewJob(){
         new_item->setText(QFileInfo(imageOpenDialog.selectedFiles()[0]).fileName());
         new_item->setIcon(QIcon(QPixmap::fromImage(selectedJob->GetSourceImage())));
         ui->listWidgetJobs->insertItem(0,new_item);
+
+        openJobs.insert(openJobs.begin(),selectedJob);
 
         SyncToSelectedJob();
     }
