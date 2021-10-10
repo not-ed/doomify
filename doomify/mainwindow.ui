@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>520</height>
+    <height>530</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>100</y>
+      <y>110</y>
       <width>201</width>
       <height>201</height>
      </rect>
@@ -52,7 +52,7 @@
       <x>20</x>
       <y>80</y>
       <width>201</width>
-      <height>17</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -63,7 +63,7 @@
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>100</y>
+      <y>110</y>
       <width>201</width>
       <height>201</height>
      </rect>
@@ -84,7 +84,7 @@
       <x>230</x>
       <y>80</y>
       <width>201</width>
-      <height>17</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -98,7 +98,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>470</y>
+      <y>480</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -114,7 +114,7 @@
     <property name="geometry">
      <rect>
       <x>620</x>
-      <y>470</y>
+      <y>480</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -127,7 +127,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>310</y>
+      <y>320</y>
       <width>411</width>
       <height>181</height>
      </rect>
@@ -328,19 +328,6 @@
       <string>Color Palette</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="buttonUpdateJobPreview">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>0</y>
-       <width>201</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Update Preview</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QLabel" name="appLogo">
     <property name="geometry">
@@ -367,8 +354,21 @@
       <x>440</x>
       <y>40</y>
       <width>341</width>
-      <height>421</height>
+      <height>431</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonUpdateJobPreview">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>80</y>
+      <width>100</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Update</string>
     </property>
    </widget>
    <zorder>groupBoxJobProperties</zorder>
@@ -381,6 +381,7 @@
    <zorder>buttonExportAllJobs</zorder>
    <zorder>appLogo</zorder>
    <zorder>listWidgetJobs</zorder>
+   <zorder>buttonUpdateJobPreview</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

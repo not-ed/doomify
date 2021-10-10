@@ -66,6 +66,7 @@ void MainWindow::SyncToSelectedJob() {
 
     ui->groupBoxJobProperties->setEnabled(job_exists);
     ui->buttonExportCurrentJob->setEnabled(job_exists);
+    ui->buttonUpdateJobPreview->setEnabled(job_exists);
 
     if(job_exists){
         // Job output dimensions

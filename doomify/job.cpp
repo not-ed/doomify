@@ -41,9 +41,15 @@ void Job::UpdateBlueBackgroundChannel(int new_value){
     dirty = UpdateDirtyFlag();
 }
 
+void Job::UpdatePalette(Palette pal) {
+    properties.palette = pal;
+    dirty = UpdateDirtyFlag();
+}
+
 void Job::RegenerateOutput() {
     if(dirty){
         outputImage = GenerateImage(sourceImage,properties);
+        dirty = UpdateDirtyFlag();
     }
 }
 
@@ -67,10 +73,11 @@ void Job::Export(){
 }
 
 bool Job::UpdateDirtyFlag() {
-    //TODO
-    return true;
-}
-
-void Job::UpdatePalette(Palette pal) {
-    properties.palette = pal;
+    if (properties.usingImageDimensions != outputImage.schema.usingImageDimensions) return true;
+    if (properties.width != outputImage.schema.width) return true;
+    if (properties.height != outputImage.schema.height) return true;
+    if (properties.palette.colors != outputImage.schema.palette.colors) return true;
+    if (properties.transparent != outputImage.schema.transparent) return true;
+    if (properties.backgroundColor != outputImage.schema.backgroundColor) return true;
+    return false;
 }
