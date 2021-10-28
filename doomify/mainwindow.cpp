@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-//TODO: Implementation of exporting multiple jobs at once needs to be implemented
-
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -57,6 +55,9 @@ void MainWindow::SetUpComponentConnections(){
     // "Export Current Job" Button
     connect(ui->buttonExportCurrentJob,&QPushButton::pressed, this, &MainWindow::ExportCurrentJob);
 
+    // "Export All Jobs" Button
+    connect(ui->buttonExportAllJobs,&QPushButton::pressed, this, &MainWindow::ExportAllJobs);
+
     // Jobs List
     connect(ui->listWidgetJobs,&QListWidget::currentRowChanged, this, &MainWindow::OnJobSelection);
 }
@@ -66,6 +67,7 @@ void MainWindow::SyncToSelectedJob() {
 
     ui->groupBoxJobProperties->setEnabled(job_exists);
     ui->buttonExportCurrentJob->setEnabled(job_exists);
+    ui->buttonExportAllJobs->setEnabled(job_exists);
     ui->buttonUpdateJobPreview->setEnabled(job_exists);
 
     if(job_exists){
@@ -201,5 +203,24 @@ void MainWindow::ExportCurrentJob(){
     if (selectedJob != nullptr)
     {
         selectedJob->Export();
+    }
+}
+
+void MainWindow::ExportAllJobs(){
+    if(openJobs.size() > 0){
+        // TODO: Code is being repeated from job->Export()
+        QFileDialog directorySaveDialog;
+        directorySaveDialog.setAcceptMode(QFileDialog::AcceptOpen);
+        directorySaveDialog.setFileMode(QFileDialog::DirectoryOnly);
+
+        if(directorySaveDialog.exec()){
+            QDir path = directorySaveDialog.directory();
+
+            // TODO: We are exporting to png only for now in this case. We need to include some kind of way for each job to specify a file format from the user.
+            for (Job* job : openJobs){
+                // "dmfy_[FILENAME].[EXT]"
+                job->Export(directorySaveDialog.directory().filePath("dmfy_" +job->GetSourceImageName()).toStdString(),"PNG");
+            }
+        }
     }
 }

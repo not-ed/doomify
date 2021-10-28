@@ -26,9 +26,11 @@ public:
 
     void RegenerateOutput();
     void Export();
+    void Export(std::string save_path, std::string extension);
 
     bool IsDirty(){return dirty;}
     QImage GetSourceImage() {return sourceImage;}
+    QString GetSourceImageName() {return sourceImageName;}
     // This does not guarantee the most up-to-date version of the output image is displayed! RegenerateOutput should be called first in such scenarios.
     QImage GetRoughOutputImage(){return outputImage.image;}
     bool UsingSourceImageSize(){return properties.usingImageDimensions;}
@@ -44,6 +46,7 @@ private:
     bool UpdateDirtyFlag();
 
     QImage sourceImage;
+    QString sourceImageName;
     ImageSchema properties;
     GeneratedImage outputImage;
 };

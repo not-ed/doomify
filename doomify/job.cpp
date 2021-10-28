@@ -1,6 +1,7 @@
 #include "job.h"
 
 Job::Job(QString image_path){
+    sourceImageName =  QFileInfo(image_path).completeBaseName();
     sourceImage = QImage(image_path);
     dirty = true;
     RegenerateOutput();
@@ -55,6 +56,7 @@ void Job::RegenerateOutput() {
 
 void Job::Export(){
     //TODO: Open/save dialogs might be better off moved to mainwindow.cpp, particularly if multiple jobs need to be exported at once
+    // This is also being duplicated in mainwindow->ExportAllJobs();
     QFileDialog imageSaveDialog;
     imageSaveDialog.setAcceptMode(QFileDialog::AcceptSave);
     imageSaveDialog.setFileMode(QFileDialog::AnyFile);
@@ -64,12 +66,16 @@ void Job::Export(){
     //
 
     if(imageSaveDialog.exec()){
-        QString save_path = imageSaveDialog.selectedFiles()[0];
-        QString selected_suffix = suffix_list.at(filters.indexOf(imageSaveDialog.selectedNameFilter()));
+        std::string save_path = imageSaveDialog.selectedFiles()[0].toStdString();
+        std::string extension = suffix_list.at(filters.indexOf(imageSaveDialog.selectedNameFilter())).toStdString();
 
-        RegenerateOutput();
-        outputImage.image.save(save_path,selected_suffix.toStdString().c_str(),100);
+        Export(save_path,extension);
     }
+}
+
+void Job::Export(std::string save_path, std::string extension) {
+    RegenerateOutput();
+    outputImage.image.save(save_path.c_str() ,extension.c_str(),100);
 }
 
 bool Job::UpdateDirtyFlag() {

@@ -46,6 +46,7 @@ private:
     void OnBackgroundBlueUpdate(int new_value);
     void OnJobSelection(int new_index);
     void ExportCurrentJob();
+    void ExportAllJobs();
 };
 
 #endif
