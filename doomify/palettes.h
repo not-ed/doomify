@@ -15,5 +15,6 @@ struct Palette{
 
 std::vector<Palette> LoadPalettesFromDisk();
 Palette ParseDmfyFile(QString path);
+Palette ParseGplFile(QString path);
 
 #endif

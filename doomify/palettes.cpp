@@ -1,5 +1,5 @@
 #include "palettes.h"
-
+#include <iostream>
 //TODO: Parse other palette file formats? (ASE, GPL, JASC, HEX etc.)
 
 std::vector<Palette> LoadPalettesFromDisk(){
@@ -7,12 +7,21 @@ std::vector<Palette> LoadPalettesFromDisk(){
 
     QDirIterator palettes_dir("./palettes", QDir::Files, QDirIterator::Subdirectories);
 
+    // Yeah, no.
+    // TODO: As more palette formats are worked in, we will need to refactor this to at least be more cleaner at some point.
     while (palettes_dir.hasNext()) {
         QString file = palettes_dir.next();
 
         // If file extension is 'dmfy'
         if(QFileInfo(file).completeSuffix().compare(QString("dmfy"),Qt::CaseInsensitive) == 0) {
             Palette loaded_palette = ParseDmfyFile(QFileInfo(file).filePath());
+
+            if (!loaded_palette.colors.empty()) palette_list.insert(palette_list.end(),loaded_palette);
+        }
+
+        // If file extension is 'GPL'
+        if(QFileInfo(file).completeSuffix().compare(QString("gpl"),Qt::CaseInsensitive) == 0) {
+            Palette loaded_palette = ParseGplFile(QFileInfo(file).filePath());
 
             if (!loaded_palette.colors.empty()) palette_list.insert(palette_list.end(),loaded_palette);
         }
@@ -61,6 +70,38 @@ Palette ParseDmfyFile(QString path){
 
         opened_file.close();
     }
+
+    return pal;
+}
+
+Palette ParseGplFile(QString path){
+    Palette pal;
+
+    std::ifstream opened_file;
+    opened_file.open(path.toStdString(), std::ios::in);
+
+    while (!opened_file.eof()){
+        int c_red = 0;
+        int c_green = 0;
+        int c_blue = 0;
+
+        // Read straight into a number, if it ever fails, continue, make sure we skip to the end of line for each and every read
+        opened_file >> c_red;
+        opened_file >> c_green;
+        opened_file >> c_blue;
+
+        if (opened_file.fail()){
+            opened_file.clear();
+            opened_file.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+            continue;
+        }
+
+        pal.colors.insert(pal.colors.begin(),QColor(c_red,c_green,c_blue));
+    }
+
+    opened_file.close();
+
+    pal.displayName = QFileInfo(path).fileName();
 
     return pal;
 }
