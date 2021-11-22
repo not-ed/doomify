@@ -85,16 +85,18 @@ Palette ParseGplFile(QString path){
         int c_green = 0;
         int c_blue = 0;
 
-        // Read straight into a number, if it ever fails, continue, make sure we skip to the end of line for each and every read
         opened_file >> c_red;
         opened_file >> c_green;
         opened_file >> c_blue;
 
+        // If we invoked a read error by reading a non-int, skip past this line and continue.
         if (opened_file.fail()){
             opened_file.clear();
             opened_file.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
             continue;
         }
+
+        opened_file.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 
         pal.colors.insert(pal.colors.begin(),QColor(c_red,c_green,c_blue));
     }
