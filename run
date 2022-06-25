@@ -8,5 +8,12 @@ cmake ./doomify -B ./build
 echo "COMPILING..."
 cmake --build ./build
 
+echo "POPULATING PALETTES FOLDER..."
+mkdir -p ./bin/palettes/
+cp ./doomify/palettes/* ./bin/palettes/
+
 echo "ATTEMPTING TO RUN DOOMIFY..."
-./bin/doomify
+cd bin
+./doomify
+
+cd ..
