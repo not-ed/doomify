@@ -15,5 +15,7 @@ sudo apt-get install qt5-default
 sudo apt install qtcreator
 ```
 
-# License
+# License and Attributions
 DOOMify is subject to the same terms found within the [Qt Open Source License](https://www.qt.io/licensing/open-source-lgpl-obligations). Like the modules used, DOOMify is also provided under the GNU General Public License (see **LICENSE**).
+
+DOOMify uses a copy of the 'single include' version of [JSON for Modern C++](https://github.com/nlohmann/json) (Ver. 3.11.2), which is made available under the [MIT License](./src/json/nlohmann/LICENSE.MIT). Copyright © 2013-2022 [Niels Lohmann](https://nlohmann.me/).

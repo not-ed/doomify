@@ -15,6 +15,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
+set(EXTERNAL_DEPENDENCIES
+	src/json/nlohmann/json.hpp
+	)
+
 set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.cpp
@@ -28,11 +32,11 @@ set(PROJECT_SOURCES
         src/imagegeneration.h 
         src/imagegeneration.cpp 
         src/palettes.cpp
-        )
-
+    )
 
 add_executable(doomify
     ${PROJECT_SOURCES}
+    ${EXTERNAL_DEPENDENCIES}
 )
 
 target_link_libraries(doomify PRIVATE Qt5::Widgets)
