@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QDirIterator>
 #include <fstream>
+#include "json/nlohmann/json.hpp"
 
 struct Palette{
     QString displayName;
@@ -16,5 +17,6 @@ struct Palette{
 std::vector<Palette> LoadPalettesFromDisk();
 Palette ParseDmfyFile(QString path);
 Palette ParseGplFile(QString path);
+Palette ParseJsonFile(QString path);
 
 #endif

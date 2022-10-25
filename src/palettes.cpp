@@ -25,6 +25,13 @@ std::vector<Palette> LoadPalettesFromDisk(){
 
             if (!loaded_palette.colors.empty()) palette_list.insert(palette_list.end(),loaded_palette);
         }
+
+        // If file extension is 'json'
+        if(QFileInfo(file).completeSuffix().compare(QString("json"),Qt::CaseInsensitive) == 0) {
+            Palette loaded_palette = ParseJsonFile(QFileInfo(file).filePath());
+
+            if (!loaded_palette.colors.empty()) palette_list.insert(palette_list.end(),loaded_palette);
+        }
     }
     
     return palette_list;
@@ -105,5 +112,36 @@ Palette ParseGplFile(QString path){
 
     pal.displayName = QFileInfo(path).fileName();
 
+    return pal;
+}
+
+Palette ParseJsonFile(QString path){
+    Palette pal;
+
+    std::ifstream opened_file;
+    opened_file.open(path.toStdString(), std::ios::in);
+
+    std::string json_data;
+
+    if (opened_file.is_open()){
+        for (std::string read_line; std::getline(opened_file,read_line);) {
+            json_data += read_line;
+        }
+    }
+    else
+    {
+        return pal;
+    }
+
+    opened_file.close();
+
+    auto parsed_json = nlohmann::json::parse(json_data);
+
+    for (auto color : parsed_json["colors"]){
+        QColor new_color = QColor(color["red"].get<int>(), color["green"].get<int>(), color["blue"].get<int>());
+        pal.colors.insert(pal.colors.begin(),new_color);
+    }
+
+    pal.displayName = QString::fromStdString(parsed_json["name"].get<std::string>());
     return pal;
 }
