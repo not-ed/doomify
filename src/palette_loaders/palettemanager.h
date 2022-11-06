@@ -4,12 +4,18 @@
 
 #include "../palettes.h"
 #include "gplpaletteloader.h"
+#include <QString>
+#include <QFileInfo>
 
 class PaletteManager{
 public:
-    std::list<Palette> PullAllPalettesFromDisk();
+    std::vector<Palette> PullAllPalettesFromDisk();
 private:
-    GplPaletteLoader GplLoader = GplPaletteLoader();
+    GplPaletteLoader gplLoader = GplPaletteLoader();
+
+    const std::map <std::string, PaletteLoader*> APPROPRIATE_LOADER {
+        {"gpl",&gplLoader},
+    };
 };
 
 #endif
