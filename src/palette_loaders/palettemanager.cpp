@@ -7,7 +7,7 @@ std::vector<Palette> PaletteManager::PullAllPalettesFromDisk() {
 
     while (palette_files.hasNext()) {
         QString next_palette = palette_files.next();
-        std::string next_palette_extension = QFileInfo(next_palette).completeSuffix().toStdString();
+        std::string next_palette_extension = QFileInfo(next_palette).completeSuffix().toLower().toStdString();
 
         // Do we actually have a loader / behaviour for this particular file's format?
         if (APPROPRIATE_LOADER.find(next_palette_extension) != APPROPRIATE_LOADER.end()){
