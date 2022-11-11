@@ -5,6 +5,7 @@
 enum PaletteLoaderOutcome{
     UNKNOWN,
     SUCCESSFUL,
+    MISSING_COLORS,
     FAILURE
 };
 
