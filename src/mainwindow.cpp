@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     SetUpImageDialog();
     SyncToSelectedJob();
 
-    palettes = LoadPalettesFromDisk();
+    palettes = paletteManager.PullAllPalettesFromDisk();
     for (auto p : palettes) {
         ui->comboBoxJobPalette->addItem(p.displayName);
     }

@@ -32,7 +32,14 @@ set(PROJECT_SOURCES
         src/imagegeneration.h 
         src/imagegeneration.cpp 
         src/palettes.cpp
-    )
+		src/palette_loaders/palettemanager.h 
+        src/palette_loaders/palettemanager.cpp 
+        src/palette_loaders/paletteloader.h 
+        src/palette_loaders/paletteloaderoutcome.h 
+        src/palette_loaders/gplpaletteloader.h 
+        src/palette_loaders/gplpaletteloader.cpp
+		src/palette_loaders/jsonpaletteloader.h
+		src/palette_loaders/jsonpaletteloader.cpp)
 
 add_executable(doomify
     ${PROJECT_SOURCES}

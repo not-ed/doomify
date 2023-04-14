@@ -9,6 +9,7 @@
 #include <QListWidget>
 #include <QColor>
 #include <vector>
+#include "palette_loaders/palettemanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,6 +28,7 @@ private:
     QFileDialog imageOpenDialog;
     void SetUpImageDialog();
 
+    PaletteManager paletteManager;
     std::vector<Palette> palettes;
 
     void CreateNewJob();
