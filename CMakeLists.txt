@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(doomify LANGUAGES CXX)
+project(doomify LANGUAGES CXX C)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -16,7 +16,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 set(EXTERNAL_DEPENDENCIES
-	src/json/nlohmann/json.hpp
+		src/json/nlohmann/json.hpp
+		src/sqlite/sqlite3.h
+		src/sqlite/sqlite3.c
 	)
 
 set(PROJECT_SOURCES
