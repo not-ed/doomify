@@ -1,5 +1,13 @@
 cmake_minimum_required(VERSION 3.5)
 
+if (WIN32)
+	add_compile_definitions(WINDOWS)
+elseif (LINUX)
+	add_compile_definitions(LINUX)
+else ()
+	message(FATAL_ERROR "Not building for Windows or Linux.")
+endif ()
+
 project(doomify LANGUAGES CXX C)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
