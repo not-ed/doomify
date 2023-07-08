@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(doomify LANGUAGES CXX)
+if (WIN32)
+	add_compile_definitions(WINDOWS)
+elseif (LINUX)
+	add_compile_definitions(LINUX)
+else ()
+	message(FATAL_ERROR "Not building for Windows or Linux.")
+endif ()
+
+project(doomify LANGUAGES CXX C)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -16,7 +24,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 set(EXTERNAL_DEPENDENCIES
-	src/json/nlohmann/json.hpp
+		src/json/nlohmann/json.hpp
+		src/sqlite/sqlite3.h
+		src/sqlite/sqlite3.c
 	)
 
 set(PROJECT_SOURCES
@@ -39,7 +49,7 @@ set(PROJECT_SOURCES
         src/palette_loaders/gplpaletteloader.h 
         src/palette_loaders/gplpaletteloader.cpp
 		src/palette_loaders/jsonpaletteloader.h
-		src/palette_loaders/jsonpaletteloader.cpp)
+		src/palette_loaders/jsonpaletteloader.cpp src/platform.h src/platform.cpp)
 
 add_executable(doomify
     ${PROJECT_SOURCES}
