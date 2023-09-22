@@ -60,6 +60,9 @@ void MainWindow::SetUpComponentConnections(){
 
     // Jobs List
     connect(ui->listWidgetJobs,&QListWidget::currentRowChanged, this, &MainWindow::OnJobSelection);
+
+    // Display Palettes Directory Button
+    connect(ui->buttonShowPalettesDirectory, &QPushButton::pressed, &paletteManager, &PaletteManager::ShowPalettesDirectory);
 }
 
 void MainWindow::SyncToSelectedJob() {

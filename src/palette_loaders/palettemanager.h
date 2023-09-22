@@ -8,9 +8,12 @@
 #include <QString>
 #include <QFileInfo>
 
-class PaletteManager{
+class PaletteManager : public QObject {
+    Q_OBJECT
 public:
     std::vector<Palette> PullAllPalettesFromDisk();
+public slots:
+    void ShowPalettesDirectory();
 private:
     PaletteLoader* GetPaletteLoaderForFileExtension(QString file_extension);
     GplPaletteLoader gplLoader = GplPaletteLoader();

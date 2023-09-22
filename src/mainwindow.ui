@@ -307,7 +307,7 @@
       <rect>
        <x>10</x>
        <y>50</y>
-       <width>391</width>
+       <width>351</width>
        <height>25</height>
       </rect>
      </property>
@@ -326,6 +326,19 @@
      </property>
      <property name="text">
       <string>Color Palette</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonShowPalettesDirectory">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>50</y>
+       <width>31</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>...</string>
      </property>
     </widget>
    </widget>

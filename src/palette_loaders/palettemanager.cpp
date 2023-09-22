@@ -1,4 +1,5 @@
 #include "palettemanager.h"
+#include <iostream> //TODO: Temp
 
 std::vector<Palette> PaletteManager::PullAllPalettesFromDisk() {
     std::vector<Palette> loaded_palettes;
@@ -23,6 +24,10 @@ std::vector<Palette> PaletteManager::PullAllPalettesFromDisk() {
     }
 
     return loaded_palettes;
+}
+
+void PaletteManager::ShowPalettesDirectory() {
+    std::cout << "Clicked" << std::endl;
 }
 
 PaletteLoader* PaletteManager::GetPaletteLoaderForFileExtension(QString file_extension) {
