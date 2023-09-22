@@ -1,24 +1,35 @@
 #include "palettemanager.h"
 
 std::vector<Palette> PaletteManager::PullAllPalettesFromDisk() {
-    std::vector<Palette> palette_list;
+    std::vector<Palette> loaded_palettes;
 
     QDirIterator palette_files("./palettes", QDir::Files, QDirIterator::Subdirectories);
 
     while (palette_files.hasNext()) {
-        QString next_palette = palette_files.next();
-        std::string next_palette_extension = QFileInfo(next_palette).completeSuffix().toLower().toStdString();
+        auto next_palette_file = palette_files.next();
+        auto next_palette_file_extension = QFileInfo(next_palette_file).completeSuffix();
 
-        // Do we actually have a loader / behaviour for this particular file's format?
-        if (APPROPRIATE_LOADER.find(next_palette_extension) != APPROPRIATE_LOADER.end()){
-            PaletteLoader* loader = APPROPRIATE_LOADER.at(next_palette_extension);
-            Palette loaded_palette = loader->LoadFile(next_palette);
+        PaletteLoader* palette_loader = GetPaletteLoaderForFileExtension(next_palette_file_extension);
+        auto supported_palette_loader_exists = palette_loader != nullptr;
+
+        if (supported_palette_loader_exists){
+            Palette loaded_palette = palette_loader->LoadFile(next_palette_file);
 
             // TODO: Could it be useful to add a user choice to continue using a palette even if there were issues loading it?
             // e.g. "This palette is missing colors, do you still want to use it?"
-            if (loader->PreviousLoadWasSuccessful()) palette_list.insert(palette_list.end(),loaded_palette);
+            if (palette_loader->PreviousLoadWasSuccessful())
+                loaded_palettes.insert(loaded_palettes.end(), loaded_palette);
         }
     }
 
-    return palette_list;
+    return loaded_palettes;
+}
+
+PaletteLoader* PaletteManager::GetPaletteLoaderForFileExtension(QString file_extension) {
+    auto extension = file_extension.toLower().toStdString();
+
+    if (PALETTE_LOADERS.find(extension) != PALETTE_LOADERS.end()){
+        return PALETTE_LOADERS.at(extension);
+    }
+    return nullptr;
 }
