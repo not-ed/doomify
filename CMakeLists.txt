@@ -25,8 +25,6 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 set(EXTERNAL_DEPENDENCIES
 		src/json/nlohmann/json.hpp
-		src/sqlite/sqlite3.h
-		src/sqlite/sqlite3.c
 	)
 
 set(PROJECT_SOURCES
